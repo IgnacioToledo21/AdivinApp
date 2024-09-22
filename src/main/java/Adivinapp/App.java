@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
 public class App extends Application {
 
     private int numeroAdivinar;  // Número que se debe adivinar
@@ -21,7 +20,7 @@ public class App extends Application {
         numeroAdivinar = (int) (Math.random() * 100) + 1; // Número aleatorio entre 1 y 100
         intentos = 0;
 
-        // Mostrar el número a adivinar
+        // Mostrar el número a adivinar en la consola para depuración
         System.out.println("Número a adivinar: " + numeroAdivinar);
 
         // Crear los elementos de la interfaz
@@ -46,9 +45,9 @@ public class App extends Application {
                 if (numeroIntroducido < 1 || numeroIntroducido > 100) {
                     mostrarWarning("Número fuera de rango", "Por favor, introduce un número entre 1 y 100.");
                 } else if (numeroIntroducido > numeroAdivinar) {
-                    mostrarError("Intento fallido", "El número es mayor al que debes adivinar.");
+                    mostrarError("Intento fallido", "El número a adivinar es menor que " + numeroIntroducido + ".");
                 } else if (numeroIntroducido < numeroAdivinar) {
-                    mostrarError("Intento fallido", "El número es menor al que debes adivinar."); // Corrección aquí
+                    mostrarError("Intento fallido", "El número a adivinar es mayor que " + numeroIntroducido + ".");
                 } else {
                     mostrarExito("¡Has ganado!", "Solo has necesitado " + intentos + " intentos.");
                     reiniciarJuego();  // Reiniciar el juego para una nueva ronda
@@ -98,4 +97,6 @@ public class App extends Application {
         // Mostrar el nuevo número a adivinar en la consola para depuración
         System.out.println("Nuevo número a adivinar: " + numeroAdivinar);
     }
+
 }
+
